@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
+
+
+
+:root{
+    --inter-font: 'Inter', sans-serif;
+    --lato-font: 'Lato', sans-serif;
+    --baloo-bhai: 'Baloo Bhai 2', sans-serif;
+    --stack-font:'Short Stack', sans-serif;
+    --julie-font: 'Just Me Again Down Here', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-image: url(/static/bg-final.png);
+    background-size: 369px;
+    background-attachment: fixed;
+}
+@supports (height: 90dvh) {
+    body {
+        min-height: 90dvh;
+        left: 1.5vw;
+    }
+}
+
+/* Sidebar Styling */
+    .sidebar{
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 85vh;
+        width: 17.5vw;
+        left: 1.5vw;
+        border-radius: 20px;
+        background-color: rgba(0, 8, 255, 0.516);
+        backdrop-filter: blur(3.5px);
+        -webkit-backdrop-filter: blur(3.5px);
+        display: flex;
+        transition: all 2s ease-in-out 30ms;
+    }
+    @supports (height: 90dvh) {
+    .sidebar {
+        height: 95dvh;
+        left: 1.5vw;
+    }
+    }
+    .sidebar .container{
+        padding: 14px;
+        display: grid;
+        grid-template-rows: 10% 60% 20% 10%;
+        grid-template-areas: "brand" "top" "bottom" "User";
+    }
+    .sidebar.hidden{
+        top: 100%;
+        transform: translateY(0%) ;
+    }
+    /* SideBar Brand */
+        .sidebar .container .brand{
+            grid-area: brand;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: var(--inter-font);
+            font-size: 19px;
+            font-weight:400;
+            padding-bottom: 20px;
+            color: #ffffff;
+        }
+        .sidebar .container .brand .svg{
+            line-height: 0;
+        }
+    /* Sidebar Top */
+        .top{
+            grid-area: top;
+            overflow: auto;
+        }
+        .sidebar .container ul{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .sidebar .container ul div{
+            padding: 10px 7px;
+            border-radius: 5px;
+        }
+        .sidebar .container ul div:hover{
+            background-color: hsla(28, 100%, 50%, 0.367);
+            cursor: pointer;
+        }
+        .sidebar .container ul .selected{
+            background-color: hsla(28, 100%, 50%, 0.704);
+        }
+        .sidebar .container ul div li{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            list-style: none;
+            font-family: var(--inter-font);
+            font-size: 13px;
+        }
+        .sidebar .container ul div li svg{
+            stroke: #fff;
+            fill: #fff;
+            min-width: 24px;
+            line-height: 0;
+        }
+        .sidebar .container ul div li{
+            color: #ffffff;
+        }
+    
+    /* Bottom Side */
+        .bottom{
+            grid-area: bottom;
+            /* border: 2px solid; */
+        }
+    
+    /* User Information */
+        .user{
+            grid-area: User;
+            display: grid;
+            grid-template-columns: 25% 75%;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas: "profile info" "profile info";
+            /* border: 2px solid black; */
+        }
+        
+        .user img{
+            grid-area: profile;
+            max-width: 100%;
+            line-height: 0;
+            justify-self: center;
+            align-self: center;
+        }
+        .user img:hover{
+            cursor: pointer;
+        }
+        .user div{
+            padding: 13px 0 0 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            max-width: 100%;
+        }
+        .user div a{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 11px;
+            font-family: var(--inter-font);
+        }
+/* Auth */
+    .auth{
+        position:fixed;
+        top: 3vh;
+        right: 3vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        font-size: 12px;
+        font-family: var(--lato-font);
+        font-weight: 700px;
+        color: white;
+        z-index: 2;
+        user-select: none;
+    }
+    .login{
+        padding: 10px 25px;
+        border-radius: 20px;
+        background: radial-gradient(circle at top left, #ee06ffd3, #3881ffb9);
+    }
+    .login:hover{
+        background: radial-gradient(circle at top left, #ee06ff, #389fffd8);
+        cursor: pointer;
+    }
+    .signup{
+        padding: 10px 25px;
+        background: radial-gradient(circle at top left, #ff7b00, black);
+        border-radius: 20px;
+    }
+    .signup:hover{
+        background: radial-gradient(circle at top left,rgba(164, 0, 0, 0.824), #422000c7);
+        cursor: pointer;
+    }
+    .authProfile{
+        /* border: 2px solid red; */
+        position: fixed;
+        transition: display 0.3 ease-in;
+        top: 20px;
+        right: 25px;
+        z-index: 2;
+        display: grid;
+        grid-template-rows: 55px auto;
+        grid-template-areas: "profile" "card";
+    }
+    .authProfile .userPic {
+        /* border: 2px solid green; */
+        grid-area: profile;
+        justify-self: flex-end;
+        cursor: pointer;
+    }
+    .authProfile .card {
+        grid-area: card;
+        display: none;
+        pointer-events: none;
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        z-index: 10;
+
+        /* Glassmorphism styles - Improved */
+        background-color: rgba(255, 255, 255, 0.3); /* Slightly less transparent white */
+        backdrop-filter: blur(12px); /* Slightly more blur */
+        -webkit-backdrop-filter: blur(12px); /* For Safari */
+        border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly more visible border */
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.45); /* Stronger shadow */
+
+        position: relative;
+        border-radius: 1rem;
+        padding: 1rem;
+        width: 100%;
+        max-width: 28rem;
+    }
