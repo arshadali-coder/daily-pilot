@@ -1,4 +1,3 @@
-
 # Flask Things
 from flask import request, redirect, url_for, make_response, g
 
